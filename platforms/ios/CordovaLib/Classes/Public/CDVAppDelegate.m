@@ -18,6 +18,7 @@
  */
 
 #import "CDVAppDelegate.h"
+#import "CDVURLProtocol.h"
 
 @implementation CDVAppDelegate
 
@@ -48,6 +49,9 @@
  */
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
+    [NSURLProtocol registerClass:[CDVURLProtocol class]];
+    NSLog(@"@@@@@@@@@@------");
+    
     CGRect screenBounds = [[UIScreen mainScreen] bounds];
 
     self.window = [[UIWindow alloc] initWithFrame:screenBounds];
