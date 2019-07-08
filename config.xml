@@ -14,7 +14,7 @@
     <preference name="CameraUsesGeolocation" value="false" />
     
     <!-- <content src="index.html" /> -->
-    <content src="http://cordova.evtape.com" />>
+    <content src="http://cordova.evtape.com/index_ios.html" />
     <plugin name="cordova-plugin-whitelist" spec="1" />
     <access origin="*" />
      <allow-navigation href="http://cordova.evtape.com" />

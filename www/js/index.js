@@ -11,7 +11,7 @@ var app = {
     onDeviceReady: function() {
         this.receivedEvent('deviceready');
         window.open = cordova.InAppBrowser.open;
-        var ref = window.open('http://cordova.evtape.com', '_blank', 'location=no,toolbar=yes,toolbarposition=top,closebuttoncaption=关闭');
+        var ref = window.open('http://cordova.evtape.com/index.html', '_blank', 'location=no,toolbar=yes,toolbarposition=top,closebuttoncaption=关闭');
     },
 
     // Update DOM on a Received Event
