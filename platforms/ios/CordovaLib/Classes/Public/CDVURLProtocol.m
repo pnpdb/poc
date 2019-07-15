@@ -5,7 +5,7 @@
 
 @end
 
-NSString* const kCDVAssetsLibraryPrefixes = @"http://injection/cordova.js";
+NSString* const kCDVAssetsLibraryPrefixes = @"http://native-js/";
 
 @implementation CDVURLProtocol
 
@@ -17,7 +17,7 @@ NSString* const kCDVAssetsLibraryPrefixes = @"http://injection/cordova.js";
     // 判断是否是我们定义的url，若是，返回YES，继续执行其他方法，若不是，返回NO，不执行其他方法
     NSLog(@"absoluteString:%@", [theUrl absoluteString]);
     if ([[theUrl absoluteString] hasPrefix:kCDVAssetsLibraryPrefixes]) {
-        NSLog(@"^^^");
+        NSLog(@"lianhai******");
         return YES;
     }
     
@@ -32,7 +32,6 @@ NSString* const kCDVAssetsLibraryPrefixes = @"http://injection/cordova.js";
 // 获取本地文件路径
 - (NSString*)pathForResource:(NSString*)resourcepath
 {
-    NSLog(@"000---");
     NSBundle* mainBundle = [NSBundle mainBundle];
     NSMutableArray* directoryParts = [NSMutableArray arrayWithArray:[resourcepath componentsSeparatedByString:@"/"]];
     NSString* filename = [directoryParts lastObject];
@@ -53,11 +52,16 @@ NSString* const kCDVAssetsLibraryPrefixes = @"http://injection/cordova.js";
 {
     // NSLog(@"%@ received %@ - start", self, NSStringFromSelector(_cmd));
     NSString* url=super.request.URL.resourceSpecifier;
-    NSString* cordova = [url stringByReplacingOccurrencesOfString:@"//injection/" withString:@""];
+    NSString* cordova = [url stringByReplacingOccurrencesOfString:@"//native-js/" withString:@""];
     NSURL* startURL = [NSURL URLWithString:cordova];
+    
+    NSLog(@"startURL: %@", [startURL absoluteString]);
     
     
     NSString* cordovaFilePath =[self pathForResource:[startURL path]];
+    
+    NSLog(@"本地资源文件路径: %@", cordovaFilePath);
+    
     if (!cordovaFilePath) {
         [self sendResponseWithResponseCode:401 data:nil mimeType:nil];//重要
         return;
@@ -87,6 +91,8 @@ NSString* const kCDVAssetsLibraryPrefixes = @"http://injection/cordova.js";
 // 将本地资源返回给H5页面
 - (void)sendResponseWithResponseCode:(NSInteger)statusCode data:(NSData*)data mimeType:(NSString*)mimeType
 {
+    NSLog(@"将本地资源返回给H5页面");
+    
     if (mimeType == nil) {
         mimeType = @"text/plain";
     }

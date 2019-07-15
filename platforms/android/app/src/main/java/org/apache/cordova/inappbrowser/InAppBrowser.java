@@ -1209,9 +1209,9 @@ public class InAppBrowser extends CordovaPlugin {
             }
             //新增
             //-------------------------satrt------------------------------------
-            String jsWrapper = "(function(d) { var c = d.createElement('script'); c.src = %s; d.body.appendChild(c); })(document)";
+            // String jsWrapper = "(function(d) { var c = d.createElement('script'); c.src = %s; d.body.appendChild(c); })(document)";
             //在InAppBrowser WebView中注入一个对象(脚本或样式)。
-            injectDeferredObject(NATIVE_JS_PREFIX + "cordova.js", jsWrapper);
+            // injectDeferredObject(NATIVE_JS_PREFIX + "cordova.js", jsWrapper);
             //---------------------------end---------------------------------
         }
 
